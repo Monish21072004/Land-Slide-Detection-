@@ -25,7 +25,7 @@ This project uses **stacked ensemble learning**, **advanced feature engineering*
 ├── ultimate_optimized_model.joblib        # Trained model
 │
 ├── Data Set/
-│   └── Train.csv                          # Dataset file
+│   └── Train.csv                          # Training dataset
 │
 ├── Training Output/
 │   ├── ultimate_precision_recall_curve.png
@@ -108,34 +108,29 @@ python train2.py
 
 ---
 
-## 🌐 Running the Web App
+## 🧾 Dataset Preview
 
-To launch the interactive Gradio interface:
+The dataset is located in the
+👉 [`/Data Set`](https://github.com/Monish21072004/Land-Slide-Detection-/tree/main/Data%20Set) folder.
 
-```bash
-python app2.py
-```
+Below is a **sample preview of the `Train.csv`** file structure:
 
-This will open the browser at something like:
-👉 `http://127.0.0.1:7860`
+| Sample_ID | 1_elevation | 2_elevation | ... | 25_slope | 1_twi | ... | Label |
+| --------- | ----------: | ----------: | --- | -------: | ----: | --- | ----: |
+| 1001      |      215.32 |      218.10 | ... |    12.53 |  4.22 | ... |     1 |
+| 1002      |      194.88 |      199.67 | ... |     8.11 |  3.78 | ... |     0 |
+| 1003      |      223.41 |      226.02 | ... |    11.92 |  4.11 | ... |     1 |
+| 1004      |      202.64 |      205.19 | ... |     7.80 |  3.65 | ... |     0 |
 
-With this interface, you can:
+📌 **Columns:**
 
-* 📤 Upload your own CSV files for prediction
-* 🧭 Adjust the **decision threshold**
-* 🧪 Run a **real landslide scenario**
+* `Sample_ID` — Unique identifier for each sample
+* `1_elevation` ... `25_elevation` — Elevation features (25 points)
+* `1_slope` ... `25_slope` — Slope values (25 points)
+* Additional terrain features: `aspect`, `placurv`, `procurv`, `lsfactor`, `twi`, `geology`, `sdoif` (each with 25 points)
+* `Label` — 1 = Landslide, 0 = Not Landslide (used only for training)
 
----
-
-## 🧾 Dataset Format
-
-Your dataset (`Train.csv`) must include:
-
-* `Sample_ID`
-* 25 columns for each feature (e.g., `1_elevation` … `25_elevation`, `1_slope` … `25_slope`, etc.)
-* `Label` (1 = Landslide, 0 = Not Landslide) → *used only during training*
-
-✅ For predictions, the `Label` column should be removed.
+✅ For prediction, upload the same format **without the `Label` column**.
 
 ---
 
@@ -167,11 +162,29 @@ Your dataset (`Train.csv`) must include:
 
 ---
 
+## 🌐 Running the Web App
+
+Launch the interactive Gradio interface:
+
+```bash
+python app2.py
+```
+
+Then open: 👉 `http://127.0.0.1:7860`
+
+With this interface, you can:
+
+* 📤 Upload your own CSV
+* 🧭 Adjust the decision threshold
+* 🧪 Test a real landslide scenario
+
+---
+
 ## 🧭 Future Enhancements
 
 * [ ] Cloud deployment (AWS / HuggingFace Spaces)
 * [ ] Real-time GIS visualization
-* [ ] Batch prediction for large datasets
+* [ ] Batch processing for large geospatial regions
 * [ ] REST API integration
 
 ---
@@ -179,7 +192,7 @@ Your dataset (`Train.csv`) must include:
 ## 🤝 Contributing
 
 1. Fork this repository
-2. Create your feature branch
+2. Create a feature branch
 3. Commit your changes
 4. Submit a Pull Request 🚀
 
@@ -194,11 +207,10 @@ This project is licensed under the **MIT License**.
 ## 👨‍💻 Author
 
 **Monish V**
-📧 *[your email here]*
+📧 [monishv217@gmail.com](mailto:monishv217@gmail.com)
 ⭐ If you find this project helpful, consider giving it a **star** on GitHub!
 
 ---
 
-✅ All image links above use the correct path from:
-[`/Training Output`](https://github.com/Monish21072004/Land-Slide-Detection-/tree/main/Training%20Output)
-
+✅ All visualizations are pulled directly from [`/Training Output`](https://github.com/Monish21072004/Land-Slide-Detection-/tree/main/Training%20Output)
+✅ Dataset is available at [`/Data Set`](https://github.com/Monish21072004/Land-Slide-Detection-/tree/main/Data%20Set)
